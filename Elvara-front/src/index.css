@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+
+.brand-legal {
+  font-family: "Inter", "Segoe UI Variable", "Segoe UI", sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+
+/* 背景流光缓动动画 */
+@keyframes gradientMove {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.animate-gradient {
+  animation: gradientMove 20s ease-in-out infinite alternate;
+}
+
+/* 隐藏密码小眼睛 */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+@media (max-height: 820px) {
+  .register-form {
+    gap: 1rem;
+  }
+
+  .auth-heading {
+    margin-bottom: 1.25rem;
+  }
+
+  .auth-switch {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .register-form {
+    gap: 0.9rem;
+  }
+
+  .register-form .auth-field > label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .register-form .auth-heading p,
+  .auth-terms {
+    display: none;
+  }
+
+  .auth-panel-inner {
+    padding-block: 0.5rem;
+  }
+}
