@@ -79,15 +79,14 @@ graph TD
 
 系统采用前后端分离与微服务架构，Java 业务后端与 Python AI 服务解耦，通过内网 HTTP 通信。
 
-```mermaid
-graph TD
-    Client(Android App / Web) <-->|WebSocket / HTTP| Nginx(Nginx 反向代理 / HTTPS)
+flowchart TD
+    Client["Android App / Web"] <-->|"WebSocket / HTTP"| Nginx["Nginx 反向代理 / HTTPS"]
     
-    Nginx <-->|路由转发| Java(Spring Boot 业务后端)
-    Nginx <-->|路由转发| Python(Python FastAPI AI 服务)
+    Nginx <-->|"路由转发"| Java["Spring Boot 业务后端"]
+    Nginx <-->|"路由转发"| Python["Python FastAPI AI 服务"]
     
-    Java <-->|JDBC| MySQL[(MySQL 持久化)]
-    Java <-->|Cache| Redis[(Redis 缓存/在线状态)]
+    Java <-->|"JDBC"| MySQL[("MySQL 持久化")]
+    Java <-->|"Cache"| Redis[("Redis 缓存/在线状态")]
     
-    Java <-->|HTTP / Tool Calling| Python
-    Python <-->|Prompt / RAG| LLM(云端大模型 API)
+    Java <-->|"HTTP / Tool Calling"| Python
+    Python <-->|"Prompt / RAG"| LLM["云端大模型 API"]
